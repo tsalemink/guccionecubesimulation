@@ -1,0 +1,6 @@
+
+<RCC>
+  <qresource prefix="guccionecubesimulationstep">
+    <file>images/registration.png</file>
+  </qresource>
+</RCC>
