@@ -46,13 +46,13 @@ class GuccioneCubeSimulationStep(WorkflowStepMountPoint):
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#file_location'))
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#uses',
-                      'python#dict'))
+                      'http://physiomeproject.org/workflow/1.0/rdf-schema#parameters_dict'))
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#uses',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#directory_location'))
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#provides',
-                      'http://physiomeproject.org/workflow/1.0/rdf-schema#directory_location'))
+                      'http://physiomeproject.org/workflow/1.0/rdf-schema#guccione_results_location'))
         # Port data:
         self._portData0 = None # http://physiomeproject.org/workflow/1.0/rdf-schema#file_location
         self._portData1 = None # python#dict
