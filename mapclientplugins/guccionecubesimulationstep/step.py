@@ -1,4 +1,3 @@
-
 '''
 MAP Client Plugin Step
 '''
@@ -36,10 +35,10 @@ class GuccioneCubeSimulationStep(WorkflowStepMountPoint):
 
     def __init__(self, location):
         super(GuccioneCubeSimulationStep, self).__init__('Guccione Cube Simulation', location)
-        self._configured = False # A step cannot be executed until it has been configured.
+        self._configured = False  # A step cannot be executed until it has been configured.
         self._category = 'Registration'
         # Add any other initialisation code here:
-        self._icon =  QtGui.QImage(':/guccionecubesimulationstep/images/registration.png')
+        self._icon = QtGui.QImage(':/guccionecubesimulationstep/images/registration.png')
         # Ports:
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#uses',
@@ -54,10 +53,10 @@ class GuccioneCubeSimulationStep(WorkflowStepMountPoint):
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#provides',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#guccione_results_location'))
         # Port data:
-        self._portData0 = None # http://physiomeproject.org/workflow/1.0/rdf-schema#file_location
-        self._portData1 = None # python#dict
-        self._portData2 = None # http://physiomeproject.org/workflow/1.0/rdf-schema#directory_location
-        self._portData3 = None # http://physiomeproject.org/workflow/1.0/rdf-schema#directory_location
+        self._portData0 = None  # http://physiomeproject.org/workflow/1.0/rdf-schema#file_location
+        self._portData1 = None  # python#dict
+        self._portData2 = None  # http://physiomeproject.org/workflow/1.0/rdf-schema#directory_location
+        self._portData3 = None  # http://physiomeproject.org/workflow/1.0/rdf-schema#directory_location
         # Config:
         self._config = {}
         self._config['identifier'] = ''
@@ -121,7 +120,7 @@ class GuccioneCubeSimulationStep(WorkflowStepMountPoint):
         if index == 0:
             self._portData0 = dataIn
         elif index == 1:
-            self._portData1 = dataIn # python#dict
+            self._portData1 = dataIn  # python#dict
         else:
             if not path.isabs(dataIn):
                 dataIn = path.abspath(path.join(self._location, dataIn))
@@ -133,7 +132,7 @@ class GuccioneCubeSimulationStep(WorkflowStepMountPoint):
         The index is the index of the port in the port list.  If there is only one
         provides port for this step then the index can be ignored.
         '''
-        return self._portData3 # http://physiomeproject.org/workflow/1.0/rdf-schema#directory_location
+        return self._portData3  # http://physiomeproject.org/workflow/1.0/rdf-schema#directory_location
 
     def configure(self):
         '''
@@ -174,7 +173,6 @@ class GuccioneCubeSimulationStep(WorkflowStepMountPoint):
         '''
         return json.dumps(self._config, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
-
     def deserialize(self, string):
         '''
         Add code to deserialize this step from string.  This method should
@@ -186,5 +184,3 @@ class GuccioneCubeSimulationStep(WorkflowStepMountPoint):
         d.identifierOccursCount = self._identifierOccursCount
         d.setConfig(self._config)
         self._configured = d.validate()
-
-
