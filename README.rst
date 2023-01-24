@@ -1,5 +1,5 @@
-{name}
-{underline}
+Guccione Cube Simulation
+========================
 
-The {name} step is a plugin for the MAP Client application.
+The Guccione Cube Simulation step is a plugin for the MAP Client application.
 
