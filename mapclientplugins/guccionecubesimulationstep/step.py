@@ -8,7 +8,7 @@ import sys
 import json
 import contextlib
 
-from PySide import QtCore, QtGui
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.guccionecubesimulationstep.configuredialog import ConfigureDialog
@@ -39,7 +39,7 @@ class GuccioneCubeSimulationStep(WorkflowStepMountPoint):
         self._configured = False # A step cannot be executed until it has been configured.
         self._category = 'Registration'
         # Add any other initialisation code here:
-        self._icon =  QtGui.QImage(':/guccionecubesimulationstep/images/registration.png')
+        self._icon = QtGui.QImage(':/guccionecubesimulationstep/images/registration.png')
         # Ports:
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#uses',
@@ -91,7 +91,7 @@ class GuccioneCubeSimulationStep(WorkflowStepMountPoint):
         resultsCross = []
 
         try:
-            QtGui.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
+            QtWidgets.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
             with nostdout():
                 resultsFibre = simulate(0.0, material_parameters, self._portData0, output_dir=self._portData3)
 
@@ -99,7 +99,7 @@ class GuccioneCubeSimulationStep(WorkflowStepMountPoint):
                 resultsCross = simulate(90.0, material_parameters, self._portData0, output_dir=self._portData3)
         finally:
             # Always unset
-            QtGui.QApplication.restoreOverrideCursor()
+            QtWidgets.QApplication.restoreOverrideCursor()
 
         results = {}
         results["materialParameters"] = material_parameters
@@ -143,7 +143,8 @@ class GuccioneCubeSimulationStep(WorkflowStepMountPoint):
         then set:
             self._configured = True
         '''
-        dlg = ConfigureDialog(QtGui.QApplication.activeWindow().currentWidget())
+        # dlg = ConfigureDialog(QtWidgets.QApplication.activeWindow().currentWidget())
+        dlg = ConfigureDialog(QtWidgets.QApplication.activeWindow())
         dlg.identifierOccursCount = self._identifierOccursCount
         dlg.setConfig(self._config)
         dlg.validate()
